@@ -33,7 +33,7 @@ def get_largest_nth_digit_num(digits: int) -> int:
 
 def get_largest_palindromic_product(digits: int) -> int:
   num1 = get_largest_nth_digit_num(digits)
-  num2 = get_largest_nth_digit_num(digits)
+  num2 = num1
   palindromic_prods = []
   
   for i in range(num1, 10 ** (digits - 1) + 1, -1):
