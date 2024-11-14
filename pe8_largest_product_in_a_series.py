@@ -30,7 +30,7 @@ THOUSAND_DIGITS_STR = """
   71636269561882670428252483600823257530420752963450
 """
 
-def get_adjacent_digits_prods(n : int) -> list:
+def get_adjacent_digits_prods(n : int):
   digits_str = re.sub(r"\s+", "", THOUSAND_DIGITS_STR) # remove newlines in triple quotes-based strings
   digits_len = len(digits_str)  
   prods = []
@@ -42,19 +42,18 @@ def get_adjacent_digits_prods(n : int) -> list:
     prod = 1
     
     for i in range(left_ptr, right_ptr + 1):
-      prod *= int(digits_str[i])
-  
+      curr_digit = digits_str[i]
+      print(curr_digit, end="")
+      
+      prod *= int(curr_digit)
+      
     prods.append(prod)  
-  
+    print(f"|product = {prod} at position {left_ptr} ~ position {right_ptr}")
+    
     left_ptr += 1
     right_ptr += 1
     
-  return prods
+  prods.sort(reverse=True)
+  print(prods[0])
 
-prods1 = sorted(get_adjacent_digits_prods(4), reverse=True)
-print(prods1)
-print(prods1[0])
-
-prods2 = sorted(get_adjacent_digits_prods(13), reverse=True)
-print(prods2)
-print(prods2[0])
+get_adjacent_digits_prods(13)
