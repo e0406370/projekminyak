@@ -1,7 +1,7 @@
 """
   Problem 8 - Largest Product in a Series
   
-  The four adjacent digits in the 1000-digit number (refer below) that have the greatest product are 9 x 9 x 8 x 9 = 5382
+  The four adjacent digits in the 1000-digit number (refer below) that have the greatest product are 9 x 9 x 8 x 9 = 5832
   Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. What is the value of this product?
 """
 
@@ -30,30 +30,46 @@ THOUSAND_DIGITS_STR = """
   71636269561882670428252483600823257530420752963450
 """
 
-def get_adjacent_digits_prods(n : int):
-  digits_str = re.sub(r"\s+", "", THOUSAND_DIGITS_STR) # remove newlines in triple quotes-based strings
+
+class AdjacentDigitsProduct():
+  def __init__(self, product: int, digits: str, initial_pos: int, final_pos: int):
+    self.product = product
+    self.digits = digits
+    self.initial_pos = initial_pos
+    self.final_pos = final_pos
+
+  def __str__(self):
+    return f"digits: {self.digits}|product: {self.product} at position {self.initial_pos} ~ position {self.final_pos}"
+
+
+def get_adjacent_digits_prods(n: int):
+  digits_str = re.sub(r"\s+", "", THOUSAND_DIGITS_STR) # remove newlines in triple quotes-based string
   digits_len = len(digits_str)  
-  prods = []
+  prods: list[AdjacentDigitsProduct] = []
   
   left_ptr = 0
   right_ptr = left_ptr + (n - 1)
   
   while (right_ptr < digits_len):
+    digits = ""
     prod = 1
     
     for i in range(left_ptr, right_ptr + 1):
       curr_digit = digits_str[i]
-      print(curr_digit, end="")
       
+      digits += curr_digit
       prod *= int(curr_digit)
       
-    prods.append(prod)  
-    print(f"|product = {prod} at position {left_ptr} ~ position {right_ptr}")
+    prods.append(AdjacentDigitsProduct(prod, digits, left_ptr, right_ptr))  
     
     left_ptr += 1
     right_ptr += 1
-    
-  prods.sort(reverse=True)
-  print(prods[0])
 
+  # display all combinations of n adjacent digits along with their product and positions
+  print("\n".join(str(prod) for prod in prods))
+  
+  # display the adjacent digits that has the greatest product
+  print(f"Answer: {max(prods, key=lambda prod: prod.product)}")
+
+get_adjacent_digits_prods(4)
 get_adjacent_digits_prods(13)
