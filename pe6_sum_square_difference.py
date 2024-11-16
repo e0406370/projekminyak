@@ -12,13 +12,19 @@
   Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
 """
 
+
 # (1^2 + 2^2 + ... + n^2)
 def get_sum_of_squares(n: int) -> int:
-  return (n * (n + 1) * (2 * n + 1)) / 6
+  return (n * (n + 1) * (2 * n + 1)) // 6
+
 
 # (1 + 2 + ... + n)^2
 def get_square_of_sum(n: int) -> int:
-  return ((n / 2) * (1 + n)) ** 2
+  return ((n // 2) * (1 + n)) ** 2
+
+
+n = 10
+print(get_square_of_sum(n) - get_sum_of_squares(n))
 
 n = 100
 print(get_square_of_sum(n) - get_sum_of_squares(n))

@@ -5,6 +5,7 @@
   Find the sum of all the multiples of 3 or 5 below 1000.
 """
 
+
 # standard for loop
 def method1(num: int) -> int:
   sum = 0
@@ -15,9 +16,14 @@ def method1(num: int) -> int:
   
   return sum
 
+
 # generator comprehension
 def method2(num: int) -> int:
   return sum(x for x in range(num) if x % 3 == 0 or x % 5 == 0)
+
+
+print(method1(10))
+print(method2(10))
 
 print(method1(1000))
 print(method2(1000))

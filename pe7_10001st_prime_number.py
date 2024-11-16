@@ -5,8 +5,9 @@
   What is the 10001st prime number?
 """
 
+
 def is_prime(num: int) -> bool:
-  if (num < 2):
+  if num < 2:
     return False
   
   LOWER_LIMIT = 2
@@ -17,6 +18,7 @@ def is_prime(num: int) -> bool:
       return False
   
   return True 
+
 
 def get_nth_prime(n: int) -> int:
   num = 2
@@ -33,4 +35,6 @@ def get_nth_prime(n: int) -> int:
     
   return -1
 
+
+print(get_nth_prime(6))
 print(get_nth_prime(10001))

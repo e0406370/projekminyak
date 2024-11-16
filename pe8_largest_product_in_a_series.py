@@ -71,5 +71,6 @@ def get_adjacent_digits_prods(n: int):
   # display the adjacent digits that has the greatest product
   print(f"Answer: {max(prods, key=lambda prod: prod.product)}")
 
+
 get_adjacent_digits_prods(4)
 get_adjacent_digits_prods(13)

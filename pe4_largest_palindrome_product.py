@@ -7,6 +7,7 @@
   Find the largest palindrome made from the product of two 3-digit numbers.
 """
 
+
 def is_palindromic_num(num: int) -> bool:
   num_str = str(num)
   
@@ -22,6 +23,7 @@ def is_palindromic_num(num: int) -> bool:
     
   return True
 
+
 def get_largest_nth_digit_num(digits: int) -> int:
   num = 9
   
@@ -30,6 +32,7 @@ def get_largest_nth_digit_num(digits: int) -> int:
     digits -= 1   
     
   return num
+
 
 def get_largest_palindromic_product(digits: int) -> int:
   num1 = get_largest_nth_digit_num(digits)
@@ -50,6 +53,7 @@ def get_largest_palindromic_product(digits: int) -> int:
   print(palindromic_prods)
   
   return palindromic_prods[0]
+
 
 print(get_largest_palindromic_product(2))
 print(get_largest_palindromic_product(3))
