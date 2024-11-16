@@ -1,5 +1,10 @@
-start_num=1
-end_num=$((start_num + 9))
+if [ $# -lt 1 ]; then
+  echo "Usage: $0 <start_num> <end_num>"
+  exit 1
+fi
+
+start_num=$1
+end_num=$2
 
 folder="pe$start_num ~ pe$end_num"
 mkdir -p "$folder"
